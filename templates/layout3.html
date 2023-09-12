@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Chic</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='layout3.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            <a href="/">
+                <img src="{{url_for('static', filename='assets/LogoCC.png')}}" alt="slide image" class="slide">
+                <div class="logo-text">
+                    <div style="font-weight: 500;">Campus</div>
+                    <div class="logo-trade">Chic</div>
+                </div>
+            </a>
+        </div>
+        <div class="links">
+            <a href="/Shirts"><div class="nav-links">Shirts</div></a>
+            <a href="/Tees"><div class="nav-links">Tees</div></a>
+            <a href="/Accessories"><div class="nav-links">Accessories</div></a>
+        </div>
+        <form method="POST" class="search" action="{{ url_for('search') }}">
+            <input class="form-control ml search searchbtn"  type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn searchbtn" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="cart">
+            <a href="/cart">
+                <span class="fa-stack fa-2x has-badge cartbtn" data-count="{{total_qty}}" href="/cart">
+                    <i content="5" class="fa fa-shopping-cart fa-stack-1x fa-inverse cart-num"></i>
+                </span>
+            </a>
+            <a href="/track_order"><div class="nav-links">Track order</div></a>
+        </div>
+
+    </header>
+
+    {% block content %}{% endblock %}
+    <br><br><br>
+    <center>
+    <div class="x-us-line" style="width: 35%;"></div>
+    </center>
+    <footer class="footer">
+        <div class="footer-flex">
+
+            <div class="footer-col" style="width:50%">
+                <div class="x-us">
+                    <span class="x-us-title">Mail us</span>
+                </div>
+                <div class="x-us-line"></div>
+                <div class="footer-details">campuschic24@gmail.com</div>
+            </div>
+
+            <div class="footer-col" style="width:50%">
+                <div class="x-us">
+                    <span class="x-us-title">Call us</span>
+                </div>
+                <div class="x-us-line"></div>
+                <div class="footer-details">+91 87690 80420</div>
+                <div class="footer-details">+91 85279 95341</div>
+            </div>
+        </div>
+    </footer>
+
+</body>

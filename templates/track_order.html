@@ -1,0 +1,26 @@
+{% extends "layout3.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='track_order.css') }}">
+
+<div class="box">
+    <br>
+    <span style="float: left;" class="x-us-title">Track Order:</span>
+    <br>
+    <br>
+    <br>
+    <form method="POST">
+        <input class="cart-form" style="width: 100%;" type="text" placeholder="Enter Valid Order ID" name="name"
+            required>
+        <br><br>
+        <button class="latest-buy" style="width: 100%; font-size: 16px;">Check Status</button>
+    </form>
+</div>
+{% if stat == 1 %}
+<div id="boxes">
+    <span style="float: left;" class="x-us-title">Delivery By: {{order['Time']}}</span><br>
+    <span style="float: left;" class="x-us-title">Current Status: {{order['Status']}}</span>
+</div>
+{% endif %}
+
+{% endblock content %}

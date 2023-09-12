@@ -1,0 +1,42 @@
+{% extends "layout3.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='new_product.css') }}">
+
+<section class="latest">
+  <h1 class="latest-title">Latest Products</h1>
+</section>
+<form method="POST" action="{{ url_for('new_prod') }}" class="form_new">
+
+  <div class="boxa">
+    <input list="category" name="category" placeholder="Category" style="width: 46%;" required>
+    <datalist id="category">
+      <option value="Tees">
+      <option value="Shirts">
+      <option value="Accessories">
+    </datalist>
+
+    <input name="name" type="text" placeholder="Name" style="width: 46%">
+
+  </div>
+  <div class="boxb">
+    <input name="mrp" type="number" placeholder="MRP" style="width: 30.3%" required>
+    <input name="srp" type="number" placeholder="SRP" style="width: 30.3%" required>
+    <input name="quantity" type="number" placeholder="Quantity" style="width: 30.3%" required>
+  </div>
+  <div class="boxc" style="width: 100%;">
+    <div class="boxd" style="width: 46%;">
+      <input name="url1" type="text" placeholder="Image URL 1" required>
+      <input name="url2" type="text" placeholder="Image URL 2" required>
+    </div>
+    <textarea name="info" type="text" placeholder="Description" class="desc" style="width: 46%; height: 90%;"
+      required></textarea>
+  </div>
+
+
+
+  <input type="submit" class="submit">
+
+</form>
+
+{% endblock content %}

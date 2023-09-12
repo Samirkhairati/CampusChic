@@ -1,0 +1,55 @@
+{% extends "layout3.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='item.css') }}">
+
+<section class="item-flex">
+    <div class="gallery">
+        <img class="gallery-img" src="{{product.get('image')[0]}}" onclick="gallery(0)">
+        <img class="gallery-img" src="{{product.get('image')[1]}}" onclick="gallery(1)">
+    </div>
+    <div class="photo">
+        <div class="photo-div">
+            <img class="photo-img" src="{{product.get('image')[0]}}" id="gallery-photo">
+        </div>
+    </div>
+    <div class="details">
+        <div class="sub-title">{{product.get('category')}}</div>
+        <div class="title">{{product.get('name')}}</div>
+        <div class="price">
+            {% if product.get('srp') == product.get('mrp') %}
+            <span class="gold-price">INR {{product.get('srp')}}</span>
+            {% else %}
+            <span class="gold-price">INR {{product.get('srp')}}</span>
+            &nbsp;&nbsp;&nbsp; <!-- adds space -->
+            <span style="text-decoration: line-through;">INR {{product.get('mrp')}}</span>
+            {% endif %}
+        </div>
+        <div class="desc">{{product.get('info')}}</div>
+        <div class="buy"><a href="/add/{{product.get('_id')}}">Add to cart</a></div>
+    </div>
+</section>
+
+<script>
+    window.onload = function(){resize()};
+    function gallery(i) {
+        document.getElementById("gallery-photo").src = document.getElementsByClassName("gallery-img")[i].src;
+        resize();
+    }
+    function resize() {
+        var h = document.getElementById("gallery-photo").naturalHeight;
+        var w = document.getElementById("gallery-photo").naturalWidth;
+        if (h>=w) {
+            document.getElementById("gallery-photo").style.height = "100%";
+            document.getElementById("gallery-photo").style.width = "auto";
+        }
+        else if (h<w) {
+            document.getElementById("gallery-photo").style.height = "auto";
+            document.getElementById("gallery-photo").style.width = "100%";
+        }
+
+    }
+</script>
+
+
+{% endblock content %}
